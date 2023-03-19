@@ -4,6 +4,8 @@ import numpy as np
 from functools import partial
 import torch.nn.functional as nnf
 from torchvision import transforms as T
+import spacy
+nlp = spacy.load("en_core_web_sm")
 
 # A lot of the approaches here are inspired from the wonderful paper from O'Connor and Andreas 2021.
 # https://github.com/lingo-mit/context-ablations
@@ -40,8 +42,8 @@ def get_image_perturb_fn(image_perturb_fn):
         return None
     
 def shuffle_nouns_and_adj(ex):
-    import spacy
-    nlp = spacy.load("en_core_web_sm")
+    #import spacy
+    #nlp = spacy.load("en_core_web_sm")
     doc = nlp(ex)
     tokens = [token.text for token in doc]
     text = np.array(tokens)
@@ -61,8 +63,8 @@ def shuffle_all_words(ex):
 
 
 def shuffle_allbut_nouns_and_adj(ex):
-    import spacy
-    nlp = spacy.load("en_core_web_sm")
+    #import spacy
+    #nlp = spacy.load("en_core_web_sm")
     doc = nlp(ex)
     tokens = [token.text for token in doc]
     text = np.array(tokens)

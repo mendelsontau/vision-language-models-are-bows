@@ -14,7 +14,7 @@ def config():
     parser.add_argument("--batch-size", default=32, type=int)
     parser.add_argument("--num_workers", default=4, type=int)
     parser.add_argument("--model-name", default="openai-clip:ViT-B/32", type=str)
-    parser.add_argument("--dataset", default="VG_Relation", type=str, choices=["VG_Relation", "VG_Attribution", "COCO_Order", "Flickr30k_Order"])
+    parser.add_argument("--dataset", default="COCO_Order", type=str, choices=["VG_Relation", "VG_Attribution", "COCO_Order", "Flickr30k_Order"])
     parser.add_argument("--seed", default=1, type=int)
     
     parser.add_argument("--download", action="store_true", help="Whether to download the dataset if it doesn't exist. (Default: False)")
@@ -41,7 +41,7 @@ def main(args):
     for record in result_records:
         record.update({"Model": args.model_name, "Dataset": args.dataset, "Seed": args.seed})
     
-    output_file = os.path.join(args.output_dir, f"{args.dataset}.csv")
+    output_file = os.path.join(args.output_dir, f"{args.dataset}_{args.model_name}.csv")
     df = pd.DataFrame(result_records)
     print(f"Saving results to {output_file}")
     if os.path.exists(output_file):

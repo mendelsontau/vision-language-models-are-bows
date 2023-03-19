@@ -1,0 +1,12 @@
+{
+    "model": "ViT-B/32",
+    "pretrained": "openai",
+    "lora":4,
+    "image_lora": true,
+    "text_lora": true,
+    "prompt_tokens": 0,
+    "prompt_attention":false,
+    "prompt_attention_full":false,
+    "mask_attention": -1,
+    "checkpoint": "../open_clip_ref/src/logs/only_lora_and_negatives/checkpoints/epoch_latest.pt"
+}
